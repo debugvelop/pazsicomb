@@ -3,8 +3,8 @@
 echo "Updating DNF repository"
 sudo dnf upgrade -y
 
-echo "Install neofetch, and screen"
-sudo dnf install neofetch screen-y
+echo "Install neofetch and screen"
+sudo dnf install neofetch screen -y
 
 echo "Install Docker"
 sudo dnf -y install dnf-plugins-core
