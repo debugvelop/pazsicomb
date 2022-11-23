@@ -1,0 +1,90 @@
+apiVersion: skaffold/v3
+kind: Config
+metadata:
+  name: workload
+build:
+  artifacts:
+  - image: adminer
+    context: src/adminer/4.8.1
+  - image: alpine
+    context: src/alpine/3.16.2
+  - image: amazonlinux
+    context: src/amazonlinux/2.0
+  - image: bash
+    context: src/bash/5.2.2
+  - image: busybox
+    context: src/busybox/1.34.1-glibc
+  - image: caddy
+    context: src/caddy/2.6.2
+  - image: consul
+    context: src/consul/1.13.3
+  - image: debian
+    context: src/debian/bullseye
+  - image: distribution
+    context: src/distribution/2.8.1
+  - image: docker
+    context: src/docker/20.10.21
+  - image: elasticsearch
+    context: src/elasticsearch/8.5.0
+  - image: ghost
+    context: src/ghost/5.22.6-debian
+  - image: gradle
+    context: src/gradle/jdk17
+  - image: haproxy
+    context: src/haproxy/2.7
+  - image: hello-world
+    context: src/hello-world/amd64
+  - image: httpd
+    context: src/httpd/2.4
+  - image: influxdb
+    context: src/influxdb/2.5.0
+  - image: kong
+    context: src/kong/3.0.0-alpine
+  - image: mariadb
+    context: src/mariadb/10.10
+  - image: maven
+    context: src/maven/3.8.6-eclipse-temurin17
+  - image: memcached
+    context: src/memcached/1.6.17-debian
+  - image: mongo
+    context: src/mongo/6.0
+  - image: mosquitto
+    context: src/mosquitto/2.0
+  - image: mysql
+    context: src/mysql/8.0
+  - image: neo4j
+    context: src/neo4j/5.1.0-community
+  - image: nextcloud
+    context: src/nextcloud/25-apache
+  - image: nginx
+    context: src/nginx/1.23.2
+  - image: node
+    context: src/node/19.0.0-bullseye
+  - image: perl
+    context: src/perl/5.036.000-main-bullseye
+  - image: postgre
+    context: src/postgre/15-bullseye
+  - image: python
+    context: src/python/3.11-bullseye
+  - image: rabbitmq
+    context: src/rabbitmq/3.11-ubuntu
+  - image: redis
+    context: src/redis/7.0
+  - image: ruby
+    context: src/ruby/3.1-bullseye
+  - image: telegraf
+    context: src/telegraf/1.24
+  - image: tomcat
+    context: src/tomcat/10.1-jdk17-temurin-jammy
+  - image: traefik
+    context: src/traefik/2.9.4-alpine
+  - image: vault
+    context: src/vault/1.12.1
+  - image: wordpress
+    context: src/wordpress/6.1.0-php7.4-apache
+  - image: zookeeper
+    context: src/zookeeper/3.8.0
+  docker:
+    noCache: true
+  local:
+    push: false
