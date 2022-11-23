@@ -84,7 +84,5 @@ build:
     context: src/wordpress/6.1.0-php7.4-apache
   - image: zookeeper
     context: src/zookeeper/3.8.0
-  docker:
-    noCache: true
   local:
     push: false
