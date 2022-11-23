@@ -9,13 +9,13 @@ for session in 5 10 20 40; do
     for set in 1 2 3; do
         echo "Build ${session} images parallel. Iteration #${set}"
         echo "Reset the Docker"
-        docker system prune -a -f
+        sudo docker system prune -a -f
         #Start the glances
         echo "Monitoring start"
         glances --export csv --export-csv-file "perflog-${session}-${set}.csv" --quiet &
         #Start the build
         echo "Building start"
-        (time skaffold build --build-concurrency=$session) 2> "buildtime-${session}-${set}.txt"
+        (time sudo skaffold build --build-concurrency=$session) 2> "buildtime-${session}-${set}.txt"
         #Stop the glances
         echo "Monitoring stop"
         pkill glances
