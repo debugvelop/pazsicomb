@@ -19,7 +19,12 @@ for session in 5 10 20 40; do
         #Stop the glances
         echo "Monitoring stop"
         pkill glances
+        #Count the number of successful build (filter by git commit hash)
+        sudo docker images | grep $(git rev-parse --short HEAD) | wc -l >> "buildtime-${session}-${set}.txt"
         echo "Uploading logs to the GCS bucket"
         gsutil cp "perflog-${session}-${set}.csv" "buildtime-${session}-${set}.txt" "gs://researchlog/${folderName}/"
     done
 done
+
+#Turn off the VM instance when it's done
+sudo shutdown now
