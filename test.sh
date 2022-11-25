@@ -25,6 +25,3 @@ for session in 5 10 20 40; do
         gsutil cp "perflog-${session}-${set}.csv" "buildtime-${session}-${set}.txt" "gs://researchlog/${folderName}/"
     done
 done
-
-#Turn off the VM instance when it's done
-sudo shutdown now
