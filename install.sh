@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Updating DNF repository"
-sudo dnf upgrade -y
+sudo dnf check-update
 
 echo "Install neofetch and screen"
 sudo dnf install neofetch screen -y
