@@ -3,6 +3,7 @@
 #Get the VM instance's name as the folder name
 folderName=$(curl --header "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/name)
 
+mkdir -p swapdisk/
 #Run the test in 4 sessions with different numbers of parallel build.
 for session in 5 10 20 40; do
     #Repeat each session 3 times to minimize random fluctuation
@@ -21,7 +22,10 @@ for session in 5 10 20 40; do
         pkill glances
         #Count the number of successful build (filter by git commit hash)
         sudo docker images | grep $(git rev-parse --short HEAD) | wc -l >> "buildtime-${session}-${set}.txt"
+        #Upload logs to the object storage
         echo "Uploading logs to the GCS bucket"
         gsutil cp "perflog-${session}-${set}.csv" "buildtime-${session}-${set}.txt" "gs://researchlog/${folderName}/"
+        #Move logs to the dedicated folder
+        mv "perflog-${session}-${set}.csv" "buildtime-${session}-${set}.txt" swapdisk/
     done
 done
