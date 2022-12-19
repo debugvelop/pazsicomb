@@ -24,7 +24,7 @@ for session in 5 10 20 40; do
         sudo docker images | grep $(git rev-parse --short HEAD) | wc -l >> "buildtime-${session}-${set}.txt"
         #Upload logs to the object storage
         echo "Uploading logs to the GCS bucket"
-        gsutil cp "perflog-${session}-${set}.csv" "buildtime-${session}-${set}.txt" "gs://researchlog/${folderName}/"
+        gsutil cp "perflog-${session}-${set}.csv" "buildtime-${session}-${set}.txt" "gs://researchlog/${folderName}/zram/"
         #Move logs to the dedicated folder
         mv "perflog-${session}-${set}.csv" "buildtime-${session}-${set}.txt" zram/
     done
