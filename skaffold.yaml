@@ -27,7 +27,7 @@ build:
   - image: elasticsearch
     context: src/elasticsearch/8.5.0
   - image: ghost
-    context: src/ghost/5.22.6-debian
+    context: src/ghost/5.25.2-debian
   - image: gradle
     context: src/gradle/jdk17
   - image: haproxy
